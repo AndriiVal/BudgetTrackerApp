@@ -1,18 +1,27 @@
 $(document).ready(function() {
+
 	$('#datepicker').datepicker({
-	    format: "dd/mm/yyyy",
+	    format: "yyyy-mm-dd",
 	    defaultDate: new Date(),
 	    todayHighlight: true,
 	    todayBtn: "linked",
 	    toggleActive: true
 	});
+
 	$('#datepicker').datepicker('update', new Date());
-	$('#my_hidden_input').val(
+
+	$('#input_date').val(
 	        $('#datepicker').datepicker('getFormattedDate')
     );
+
+	$('.'+ $('#input_date').val()).show();
+
 	$('#datepicker').on('changeDate', function() {
-	    $('#my_hidden_input').val(
+	    $('#input_date').val(
 	        $('#datepicker').datepicker('getFormattedDate')
     	);
+    $('.collapse').hide();
+    $('.'+ $('#input_date').val()).show();
     });
+
 })
