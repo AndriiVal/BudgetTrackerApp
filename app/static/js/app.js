@@ -15,5 +15,4 @@ $(document).ready(function() {
 	        $('#datepicker').datepicker('getFormattedDate')
     	);
     });
-    $('.collapse').removeClass('show');
 })
