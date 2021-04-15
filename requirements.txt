@@ -91,6 +91,3 @@ whichcraft==0.6.1
 win10toast==0.9
 WTForms==2.3.3
 zipp==3.3.0
-zope.deprecation==4.4.0
-zope.event==4.4
-zope.interface==4.7.1
