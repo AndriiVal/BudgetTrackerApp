@@ -10,7 +10,7 @@ from app.extensions import db, login
 class Entry(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     category = db.Column(db.String(50))
-    spent = db.Column(db.Integer)
+    spent = db.Column(db.Float)
     entry_date = db.Column(db.String(100))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 

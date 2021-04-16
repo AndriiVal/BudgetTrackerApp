@@ -16,12 +16,36 @@ $(document).ready(function() {
 
 	$('.'+ $('#input_date').val()).show();
 
+	var totals=[0,0,0];
+	var $dataRows=$('.'+$('#input_date').val());
+    $dataRows.each(function() {
+        $(this).find('.rowDataSd').each(function(i){        
+            totals[i]+=parseFloat( $(this).html());
+        });
+    });
+    $("#sum_table td.totalCol").each(function(i){  
+        $(this).html(totals[i]+" $");
+    });
+
+
 	$('#datepicker').on('changeDate', function() {
 	    $('#input_date').val(
 	        $('#datepicker').datepicker('getFormattedDate')
     	);
-    $('.collapse').hide();
-    $('.'+ $('#input_date').val()).show();
+    	$('.collapse').hide();
+    	$('.'+ $('#input_date').val()).show();
+
+    	var totals=[0,0,0];
+    	var $dataRows=$('.'+$('#input_date').val());
+	    $dataRows.each(function() {
+	        $(this).find('.rowDataSd').each(function(i){        
+	            totals[i]+=parseFloat( $(this).html());
+	        });
+	    });
+	    $("#sum_table td.totalCol").each(function(i){  
+	        $(this).html(totals[i]+" $");
+	    });
+
     });
 
 })
