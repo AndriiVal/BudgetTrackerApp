@@ -5,10 +5,10 @@ from logging.handlers import RotatingFileHandler
 from flask import Flask
 
 from config import Config
-from app.blueprints.main import main as main_blueprint
-from app.blueprints.auth import auth as auth_blueprint
-from app.extensions import db, migrate, login
-from app import models
+from webapp.blueprints.main import main as main_blueprint
+from webapp.blueprints.auth import auth as auth_blueprint
+from webapp.extensions import db, migrate, login
+from webapp import models
 
 def create_app():
 	app = Flask(__name__)

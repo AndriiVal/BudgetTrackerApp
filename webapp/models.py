@@ -3,15 +3,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
 
-from app.extensions import db, login
+from webapp.extensions import db, login
 
 
 
 class Entry(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    category = db.Column(db.String(50))
+    category = db.Column(db.String(128))
     spent = db.Column(db.Float)
-    entry_date = db.Column(db.String(100))
+    entry_date = db.Column(db.String(128))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 
     def if_name_is_empty(self):
@@ -39,8 +39,8 @@ class Entry(db.Model):
 
 class Users(UserMixin,db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    username = db.Column(db.String(50))
-    password_hash = db.Column(db.String(64))
+    username = db.Column(db.String(128), unique=True, nullable=False)
+    password_hash = db.Column(db.String(256), nullable=False)
     entry = db.relationship('Entry',backref='author',lazy='dynamic')
     
     def set_password(self, password):

@@ -6,7 +6,7 @@ Budget tracker app using python, flask, bootstrap and jquery
 
 Live Demo
 ----------
-[Budget Tracker App demo](https://budget-demo-tracker.herokuapp.com)
+[Budget Tracker App demo](https://budget-tracker-flask.onrender.com)
 
 Requires
 -------------
@@ -18,7 +18,7 @@ Python Modules
 
 Initializing the Flask
 ----------------------
- * set FLASK_APP=budget_tracker.py
+ * set FLASK_APP=app.py
 
 
 Initializing the Database

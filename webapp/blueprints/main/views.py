@@ -1,8 +1,8 @@
 from flask import redirect,url_for,jsonify,request,flash,render_template
 from flask_login import current_user, login_required
 from . import main
-from app.models import Entry
-from app.extensions import db
+from webapp.models import Entry
+from webapp.extensions import db
 import ast
 
 
