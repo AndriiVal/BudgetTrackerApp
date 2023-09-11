@@ -10,10 +10,11 @@ import ast
 @main.route('/')
 @main.route('/index')
 def index():
-    entry = Entry.query.filter_by(user_id='guest').all()
     if current_user.is_authenticated:
         entry = Entry.query.filter_by(user_id=current_user.id).all()
-    return render_template('index.html',title='Welcome',entry=entry)
+        return render_template('index.html',title='Welcome',entry=entry)
+    else:
+        return redirect(url_for('auth.login'))
 
 @main.route('/account')
 @login_required
@@ -27,11 +28,6 @@ def add_entry():
     if request.method=='POST':
         if current_user.is_authenticated:
             entry = Entry(category=request.form['category'],user_id=current_user.id,entry_date=request.form['entry_date'],spent=request.form['spent'])
-            db.session.add(entry)
-            db.session.commit()
-            flash('Entry added - {}'.format(request.form['category']))
-        else:
-            entry = Entry(category=request.form['category'],user_id='guest',entry_date=request.form['entry_date'],spent=request.form['spent'])
             db.session.add(entry)
             db.session.commit()
             flash('Entry added - {}'.format(request.form['category']))        	
